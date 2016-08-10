@@ -12,3 +12,6 @@
 
 ;; Activar modo de autocompletar paréntesis
 (electric-pair-mode 1)
+
+;; Evitar pantalla de bienvenida
+(setq inhibit-splash-screen t) 

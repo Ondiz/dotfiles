@@ -1,16 +1,16 @@
-;; Tildes
-
-(require 'iso-transl)
+;; Añadir path
+(add-to-list 'load-path "~/.emacs.d/extra")
 
 ;; Asignar los archivos .md al modo markdown
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 
-;; Activar Auto Fill en modo texto y modos relacionados
+;; Asignar los archivos .latex al modo LaTex
+(add-to-list 'auto-mode-alist '("\\.latex\\'" . LaTeX-mode))
 
+;; Activar Auto Fill en modo texto y modos relacionados
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
 
 ;; Activar Flyspell en modo texto y modos relacionados
-
 (add-hook 'text-mode-hook
   '(lambda () (flyspell-mode 1)))
 
@@ -29,6 +29,9 @@
     (setq-default buffer-file-coding-system 'utf-8)
   (setq default-buffer-file-coding-system 'utf-8))
 (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING))
+
+;; Tildes
+(require 'iso-transl)
 
 ;; Aspell
 
@@ -49,8 +52,9 @@
 (add-hook 'text-mode-hook 'turn-on-auto-capitalize-mode)
 (setq auto-capitalize-words '("Ondiz")) ;; palabras que se vuelven mayúsculas por defecto
 
-;; Asignar los archivos .latex al modo LaTex
-(add-to-list 'auto-mode-alist '("\\.latex\\'" . LaTeX-mode))
+;; Barra de ancho
+(require 'fill-column-indicator) 
+(add-hook 'markdown-mode-hook 'fci-mode)
 
 ;; Definir keybindings
 ;; Compilar

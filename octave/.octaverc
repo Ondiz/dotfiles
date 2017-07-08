@@ -1,0 +1,2 @@
+cd ("~/Documentos/Octave") % cambiar carpeta
+history_control ("ignoredups"); % ignore duplicates in command history

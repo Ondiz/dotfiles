@@ -82,3 +82,38 @@
 ;; Activar flycheck siempre
 (add-hook 'after-init-hook #'global-flycheck-mode)
 
+;; Personalización de org mode
+;; ---------------------------
+
+;; Indented mode
+(setq org-startup-indented t)
+
+;; Marcar fecha de tarea realizada
+(setq org-log-done 'time)
+
+;; Aadir ms palabras clave
+(setq org-todo-keywords
+       '((sequence "TODO" "CHECK" "|" "DONE" "CANCELLED")))
+
+;; Cambiar color de palabras clave
+(setq org-todo-keyword-faces
+      '(
+        ("TODO"  . (:foreground "firebrick2" :weight bold))
+        ("CHECK"  . (:foreground "orange1" :weight bold))
+        ("DONE"  . (:foreground "forestgreen" :weight bold))
+        ("CANCELLED"  . shadow)
+	))
+
+;; Ruta a ditaa y plantuml
+(setq org-ditaa-jar-path (expand-file-name "ditaa0_9.jar" "~/.emacs.d/extra")) 
+(setq org-plantuml-jar-path (expand-file-name "plantuml.jar" "~/.emacs.d/extra"))
+
+;; Activar lenguajes
+(org-babel-do-load-languages
+  (quote org-babel-load-languages)
+  (quote (
+	  (emacs-lisp . t)
+	  (calc . t)
+	  (ditaa . t)
+	  (plantuml . t)
+	  )))

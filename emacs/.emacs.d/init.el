@@ -117,3 +117,11 @@
 	  (ditaa . t)
 	  (plantuml . t)
 	  )))
+
+;; Redimensionar si hay atributo, si no dejar tamaño original
+;; #+ATTR_X: :width [%] / X = [ORG, HTML, LATEX]
+(setq org-image-actual-width nil)
+
+;; Mostrar imagen tras crearla en bloque de código
+(add-hook 'org-babel-after-execute-hook
+	  'org-display-inline-images 'append)

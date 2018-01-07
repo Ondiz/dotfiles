@@ -82,6 +82,12 @@
 ;; Activar flycheck siempre
 (add-hook 'after-init-hook #'global-flycheck-mode)
 
+;; Archivos de autoguardado en carpeta temporal
+(setq backup-directory-alist
+      `((".*" . ,temporary-file-directory)))
+(setq auto-save-file-name-transforms
+      `((".*" ,temporary-file-directory t)))
+
 ;; Personalización de org mode
 ;; ---------------------------
 
@@ -125,3 +131,6 @@
 ;; Mostrar imagen tras crearla en bloque de código
 (add-hook 'org-babel-after-execute-hook
 	  'org-display-inline-images 'append)
+
+;; Activar soporte para ratn
+(require 'org-mouse)

@@ -76,6 +76,9 @@
 ;; Recompilar
 (global-set-key "\C-cr" 'recompile)
 
+;; Magit status
+(global-set-key (kbd "C-x g") 'magit-status)
+
 ;; Modo haskell
 ;; https://github.com/haskell/haskell-mode
 
@@ -97,7 +100,7 @@
 ;; Marcar fecha de tarea realizada
 (setq org-log-done 'time)
 
-;; Aadir ms palabras clave
+;; Palabras clave
 (setq org-todo-keywords
        '((sequence "TODO" "CHECK" "|" "DONE" "CANCELLED")))
 
@@ -132,5 +135,5 @@
 (add-hook 'org-babel-after-execute-hook
 	  'org-display-inline-images 'append)
 
-;; Activar soporte para ratn
+;; Activar soporte para ratón
 (require 'org-mouse)

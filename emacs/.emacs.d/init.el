@@ -71,7 +71,7 @@
 ;; Aspecto
 ;; -------
 
-;; Tema
+;; Tema (paquete avk-emacs-themes en Melpa)
 (load-theme 'avk-daylight)
 
 ;; Barra de ancho
@@ -158,6 +158,42 @@
 
 ;; Activar soporte para ratón
 (require 'org-mouse)
+
+;; Xelatex
+(setq org-latex-pdf-process 
+      '("xelatex -interaction nonstopmode %f"
+	"xelatex -interaction nonstopmode %f"))
+
+;; Activar CDLaTeX con Org mode
+(add-hook 'org-mode-hook 'turn-on-org-cdlatex)
+
+;; Paquetes de LaTeX
+(setq org-latex-default-packages-alist
+	     '((""    "fontspec"  t)
+	       (""    "polyglossia" t)
+	       (""    "graphicx"  t)
+	       (""    "amsmath"   t)
+	       (""    "amssymb"   t)
+	       (""    "amsfonts"  t)
+	       (""    "listings"  t)
+	       (""    "microtype" t)
+	       ("usenames,dvipsnames,svgnames,table"    "xcolor"    t)
+	       (""    "longtable" t)
+	       (""    "float"     t)
+	       (""    "rotating"  t)
+	       (""    "parskip"   t)
+	       (""    "hyperref"  t)))
+
+;; Bloques de código
+;; Sintaxis resaltada
+(setq org-src-fontify-natively t)
+;; Tabs en bloque de código
+(setq org-src-tab-acts-natively t)
+
+;; Org bullets
+(require 'org-bullets)
+(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

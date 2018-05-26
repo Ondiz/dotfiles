@@ -8,10 +8,14 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   (quote
+    ("08f5da7e1f5064a2917af94f0dab946adfb25665b25450168ded749ec78a1145" default)))
  '(package-archives
    (quote
     (("gnu" . "http://elpa.gnu.org/packages/")
-     ("melpa-stable" . "http://stable.melpa.org/packages/")))))
+     ("melpa" . "http://melpa.org/packages/")
+     ("marmalade" . "http://marmalade-repo.org/packages/")))))
 (package-initialize)
 
 ;; Asignar los archivos .md al modo markdown
@@ -64,11 +68,25 @@
 (add-hook 'text-mode-hook 'turn-on-auto-capitalize-mode)
 (setq auto-capitalize-words '("Ondiz")) ;; palabras que se vuelven mayúsculas por defecto
 
+;; Aspecto
+;; -------
+
+;; Tema
+(load-theme 'avk-daylight)
+
 ;; Barra de ancho
 (require 'fill-column-indicator) 
 (add-hook 'markdown-mode-hook 'fci-mode)
 
-;; Definir keybindings
+;; Fuente
+(if (eq system-type 'windows-nt)
+    (set-face-attribute 'default nil :family "Consolas" :height 110)
+    (set-face-attribute 'default nil :family "Roboto Mono" :height 110)
+)
+
+;; Keybindings
+;; -----------
+
 ;; Compilar
 (global-set-key "\C-cm" 'compile)
 
@@ -140,3 +158,9 @@
 
 ;; Activar soporte para ratón
 (require 'org-mouse)
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

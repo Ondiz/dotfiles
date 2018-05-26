@@ -47,7 +47,6 @@
 (require 'iso-transl)
 
 ;; Aspell
-
 (setq-default ispell-program-name "aspell")
 (setq ispell-dictionary "castellano8")
 
@@ -90,6 +89,10 @@
       `((".*" . ,temporary-file-directory)))
 (setq auto-save-file-name-transforms
       `((".*" ,temporary-file-directory t)))
+
+
+;; Desactivar VC
+(setq vc-handled-backends nil)
 
 ;; Personalización de org mode
 ;; ---------------------------

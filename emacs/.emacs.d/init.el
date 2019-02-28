@@ -100,7 +100,7 @@
 ;; https://github.com/haskell/haskell-mode
 
 ;; Activar flycheck siempre
-(add-hook 'after-init-hook #'global-flycheck-mode)
+;; (add-hook 'after-init-hook #'global-flycheck-mode)
 
 ;; Archivos de autoguardado en carpeta temporal
 (setq backup-directory-alist
@@ -111,6 +111,35 @@
 
 ;; Desactivar VC
 (setq vc-handled-backends nil)
+
+;; Personalización de AUCTeX
+;; -------------------------
+
+;; Activar CDLaTeX
+(add-hook 'LaTeX-mode-hook 'turn-on-cdlatex)
+;; Activar prettify
+(add-hook 'LaTeX-mode-hook 'prettify-symbols-mode)
+ 
+;; Autocompletar
+(add-hook 'LaTeX-mode-hook (lambda ()(company-mode 1)))
+(company-auctex-init)
+ 
+;; Pide archivo maestro, para documentos con subdocumentos
+(setq-default TeX-master nil)
+ 
+;; Parser automático
+(setq TeX-parse-self t) ; activar el parser al cargar
+(setq TeX-auto-save t) ; activar el parser al guardar
+ 
+;; Fold por defecto
+(add-hook 'LaTeX-mode-hook (lambda ()(TeX-fold-mode 1)))
+ 
+;; Activar RefTeX
+(add-hook 'LaTeX-mode-hook 'turn-on-reftex)
+(setq reftex-plug-into-AUCTeX t)
+ 
+;; LaTeX extra para tener doblado de secciones como Org
+(add-hook 'LaTeX-mode-hook #'latex-extra-mode)
 
 ;; Personalización de org mode
 ;; ---------------------------

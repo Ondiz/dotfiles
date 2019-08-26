@@ -15,7 +15,10 @@
    (quote
     (("gnu" . "http://elpa.gnu.org/packages/")
      ("melpa" . "http://melpa.org/packages/")
-     ("marmalade" . "http://marmalade-repo.org/packages/")))))
+     ("marmalade" . "http://marmalade-repo.org/packages/"))))
+ '(package-selected-packages
+   (quote
+    (ess pdf-tools org-bullets magit latex-extra julia-mode haskell-mode flycheck company-auctex cdlatex avk-emacs-themes))))
 (package-initialize)
 
 ;; Asignar los archivos .md al modo markdown
@@ -168,6 +171,11 @@
 (setq org-plantuml-jar-path (expand-file-name "plantuml.jar" "~/.emacs.d/extra"))
 
 ;; Activar lenguajes
+
+;; Código Julia en Org
+(setq inferior-julia-program-name "julia")
+(require 'ob-julia)
+
 (org-babel-do-load-languages
   (quote org-babel-load-languages)
   (quote (
@@ -175,6 +183,7 @@
 	  (calc . t)
 	  (ditaa . t)
 	  (plantuml . t)
+	  (julia . t)
 	  )))
 
 ;; Redimensionar si hay atributo, si no dejar tamaño original
@@ -204,7 +213,7 @@
 	       (""    "amsmath"   t)
 	       (""    "amssymb"   t)
 	       (""    "amsfonts"  t)
-	       (""    "listings"  t)
+	       (""    "listings"  t) ;; TODO: change to UTF8 supporting
 	       (""    "microtype" t)
 	       ("usenames,dvipsnames,svgnames,table"    "xcolor"    t)
 	       (""    "longtable" t)

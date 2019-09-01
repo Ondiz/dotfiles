@@ -40,6 +40,9 @@
 ;; Evitar pantalla de bienvenida
 (setq inhibit-splash-screen t) 
 
+;; Abrir maximizado
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
+
 ;; Codificación UTF-8 por defecto
 (prefer-coding-system 'utf-8)
 (set-default-coding-systems 'utf-8)
@@ -184,6 +187,7 @@
 	  (ditaa . t)
 	  (plantuml . t)
 	  (julia . t)
+	  (python . t)
 	  )))
 
 ;; Redimensionar si hay atributo, si no dejar tamaño original
@@ -205,6 +209,10 @@
 ;; Activar CDLaTeX con Org mode
 (add-hook 'org-mode-hook 'turn-on-org-cdlatex)
 
+;; Exportar código como listings
+(require 'ox-latex)
+(setq org-latex-listings t)
+
 ;; Paquetes de LaTeX
 (setq org-latex-default-packages-alist
 	     '((""    "fontspec"  t)
@@ -213,7 +221,7 @@
 	       (""    "amsmath"   t)
 	       (""    "amssymb"   t)
 	       (""    "amsfonts"  t)
-	       (""    "listings"  t) ;; TODO: change to UTF8 supporting
+	       (""    "listingsutf8"  t)
 	       (""    "microtype" t)
 	       ("usenames,dvipsnames,svgnames,table"    "xcolor"    t)
 	       (""    "longtable" t)

@@ -18,7 +18,7 @@
      ("marmalade" . "http://marmalade-repo.org/packages/"))))
  '(package-selected-packages
    (quote
-    (ess pdf-tools org-bullets magit latex-extra julia-mode haskell-mode flycheck company-auctex cdlatex avk-emacs-themes))))
+    (helm-bibtex ess pdf-tools org-bullets magit latex-extra julia-mode haskell-mode flycheck company-auctex cdlatex avk-emacs-themes))))
 (package-initialize)
 
 ;; Asignar los archivos .md al modo markdown
@@ -38,7 +38,10 @@
 (electric-pair-mode 1)
 
 ;; Evitar pantalla de bienvenida
-(setq inhibit-splash-screen t) 
+(setq inhibit-splash-screen t)
+
+;; Confirmar antes de cerrar
+(setq confirm-kill-emacs 'y-or-n-p)
 
 ;; Abrir maximizado
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
@@ -189,6 +192,9 @@
 	  (julia . t)
 	  (python . t)
 	  )))
+
+;; Usar python3
+(setq org-babel-python-command "python3")
 
 ;; Redimensionar si hay atributo, si no dejar tamaño original
 ;; #+ATTR_X: :width [%] / X = [ORG, HTML, LATEX]
